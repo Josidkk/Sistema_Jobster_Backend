@@ -22,6 +22,7 @@ namespace Sistema_Jobster.API.Controllers
         [HttpGet("Listar")]
         public IActionResult Listar()
         {
+           
             var response = _accesoService.ListarUsuarios();
             return Ok(response);
         }

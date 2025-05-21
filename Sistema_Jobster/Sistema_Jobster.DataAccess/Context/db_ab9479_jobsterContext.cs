@@ -64,14 +64,8 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.Carg_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.Carg_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbCargosUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbCargos_Acce_tbUsuarios_Usua_Creacion");
 
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbCargosUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbCargos_Acce_tbUsuarios_Usua_Modificacion");
+        
         });
 
         modelBuilder.Entity<tbCategorias>(entity =>
@@ -88,14 +82,7 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.Cate_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.Cate_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbCategoriasUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbCategorias_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbCategoriasUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbCategorias_Acce_tbUsuarios_Usua_Modificacion");
+         
         });
 
         modelBuilder.Entity<tbDepartamentos>(entity =>
@@ -114,13 +101,7 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.Depa_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.Depa_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbDepartamentosUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Gral_tbDepartamentos_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbDepartamentosUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Gral_tbDepartamentos_Acce_tbUsuarios_Usua_Modificacion");
+        
         });
 
         modelBuilder.Entity<tbEstadosCiviles>(entity =>
@@ -136,14 +117,6 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.EsCi_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.EsCi_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbEstadosCivilesUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Gral_tbEstadosCiviles_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbEstadosCivilesUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Gral_tbEstadosCiviles_Acce_tbUsuarios_Usua_Modificacion");
         });
 
         modelBuilder.Entity<tbGuardados>(entity =>
@@ -161,19 +134,9 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Plaz_tbGuardados_Plaz_tbPlazas_Plaz_Id");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbGuardadosUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbGuardados_Acce_tbUsuarios_Usua_Creacion");
+          
 
-            entity.HasOne(d => d.Usua).WithMany(p => p.tbGuardadosUsua)
-                .HasForeignKey(d => d.Usua_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbGuardados_Acce_tbUsuarios_Usua_Id");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbGuardadosUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbGuardados_Acce_tbUsuarios_Usua_Modificacion");
+            
         });
 
         modelBuilder.Entity<tbMunicipios>(entity =>
@@ -199,13 +162,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasForeignKey(d => d.Depa_Codigo)
                 .HasConstraintName("FK_Gral_tbMunicipios_Gral_tbDepartamentos_Depa_Codigo");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbMunicipiosUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Gral_tbMunicipios_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbMunicipiosUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Gral_tbMunicipios_Acce_tbUsuarios_Usua_Modificacion");
+        
         });
 
         modelBuilder.Entity<tbPantallas>(entity =>
@@ -230,13 +187,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPantallasUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Acce_tbPantallas_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPantallasUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Acce_tbPantallas_Usua_Modificacion");
+           
         });
 
         modelBuilder.Entity<tbPantallasPorRol>(entity =>
@@ -256,13 +207,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasForeignKey(d => d.Role_Id)
                 .HasConstraintName("FK_Acce_tbPantallasPorRol_Role_Id");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPantallasPorRolUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPantallasPorRolUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Usua_Modificacion");
+   
         });
 
         modelBuilder.Entity<tbPersonas>(entity =>
@@ -315,14 +260,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Gral_tbPersonas_Gral_tbMunicipios_Muni_Codigo");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPersonasUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Gral_tbPersonas_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPersonasUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Gral_tbPersonas_Acce_tbUsuarios_Usua_Modificacion");
+          
         });
 
         modelBuilder.Entity<tbPlazas>(entity =>
@@ -380,19 +318,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Plaz_tbPlazas_Plaz_tbTiposContrato_TiCo_Id");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPlazasUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbPlazas_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua).WithMany(p => p.tbPlazasUsua)
-                .HasForeignKey(d => d.Usua_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbPlazas_Acce_tbUsuarios_Usua_Id");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPlazasUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbPlazas_Acce_tbUsuarios_Usua_Modificacion");
+        
         });
 
         modelBuilder.Entity<tbRequisitos>(entity =>
@@ -417,14 +343,6 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasForeignKey(d => d.Plaz_Id)
                 .HasConstraintName("FK_Plaz_tbRequisitos_Plaz_tbPlazas_Plaz_Id");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbRequisitosUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbRequisitos_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbRequisitosUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbRequisitos_Acce_tbUsuarios_Usua_Modificacion");
         });
 
         modelBuilder.Entity<tbRoles>(entity =>
@@ -441,13 +359,6 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.Role_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.Role_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbRolesUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Acce_tbRoles_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbRolesUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Acce_tbRoles_Acce_tbUsuarios_Usua_Modificacion");
         });
 
         modelBuilder.Entity<tbSolicitudes>(entity =>
@@ -471,19 +382,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Plaz_tbSolicitudes_Plaz_tbSolicitudes_Plaz_Id");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbSolicitudesUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbSolicitudes_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua).WithMany(p => p.tbSolicitudesUsua)
-                .HasForeignKey(d => d.Usua_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbSolicitudes_Acce_tbUsuarios_Usua_Id");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbSolicitudesUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbSolicitudes_Acce_tbUsuarios_Usua_Modificacion");
+           
         });
 
         modelBuilder.Entity<tbTiposContrato>(entity =>
@@ -500,14 +399,7 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.TiCo_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.TiCo_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbTiposContratoUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Plaz_tbTiposContrato_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbTiposContratoUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Plaz_tbTiposContrato_Acce_tbUsuarios_Usua_Modificacion");
+          
         });
 
         modelBuilder.Entity<tbUsuarios>(entity =>
@@ -532,24 +424,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Pers).WithMany(p => p.tbUsuarios)
-                .HasForeignKey(d => d.Pers_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Acce_tbUsuarios_Gral_tbPersonas_Pers_Id");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.tbUsuarios)
-                .HasForeignKey(d => d.Role_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Acce_tbUsuarios_Acce_tbRoles_Role_Id");
-
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.InverseUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Acce_tbUsuarios_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.InverseUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Acce_tbUsuarios_Acce_tbUsuarios_Usua_Modificacion");
+         
         });
 
         OnModelCreatingPartial(modelBuilder);
