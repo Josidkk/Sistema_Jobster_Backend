@@ -18,7 +18,13 @@ namespace Sistema_Jobster.DataAccess.Repositories
         public static string Cargo_Buscar     = "[Plaz].[SP_Cargos_Buscar]";
 
         #endregion
-        
+
+        #region pantallassegunrol
+
+        public static string PantSel_Buscar = "[Acce].[SP_Pantallas_ListarSeleccionadas]";
+
+        #endregion
+
 
 
 

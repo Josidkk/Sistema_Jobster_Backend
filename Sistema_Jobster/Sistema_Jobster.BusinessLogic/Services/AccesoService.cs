@@ -16,18 +16,20 @@ namespace Sistema_Jobster.BusinessLogic.Services
         //private readonly PantallasRepository _pantallasRepository;
         //private readonly UsuarioRepository _UsuarioRepository;
         private readonly PantallasPorRolRepository _pantallasPorRolRepository;
+        private readonly UsuarioRepository _usuarioRepository;
 
         //public AccesoService(RolesPorPantallasRepository rolesPorPantallasRepository,
         //                    RolesRepository rolesRepository,
         //                    PantallasRepository pantallasRepository,
         //                    UsuarioRepository UsuarioRepository)
-        public AccesoService(PantallasPorRolRepository pantallasPorRolRepository)
+        public AccesoService(PantallasPorRolRepository pantallasPorRolRepository, UsuarioRepository usuarioRepository)
         {
             //_rolesPorPantallasRepository = rolesPorPantallasRepository;
             //_rolesRepository = rolesRepository;
             //_pantallasRepository = pantallasRepository;
             //_UsuarioRepository = UsuarioRepository;
             _pantallasPorRolRepository = pantallasPorRolRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         #region Roles
@@ -135,5 +137,93 @@ namespace Sistema_Jobster.BusinessLogic.Services
         }
 
         #endregion PantallasPorRol
+
+        #region Usuarios
+
+        public ServiceResult ListarUsuarios()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var usuarios = _usuarioRepository.ListarUsuarios();
+                return result.Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult BuscarUsuario(int id)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var usuario = _usuarioRepository.BuscarUsuario(id);
+                return result.Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult InsertarUsuario(tbUsuarios usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _usuarioRepository.InsertarUsuario(usuario);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult EliminarUsuario(tbUsuarios usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _usuarioRepository.EliminarUsuario(usuario);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult RestablecerContrasena(tbUsuarios usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _usuarioRepository.RestablecerContrasena(usuario);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult EditarUsuario(tbUsuarios usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _usuarioRepository.EditarUsuario(usuario);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        #endregion Usuarios
     }
 }

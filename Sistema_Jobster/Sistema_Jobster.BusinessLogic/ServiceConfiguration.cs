@@ -29,7 +29,7 @@ namespace Sistema_Jobster.BusinessLogic
             //services.AddScoped<RolesPorPantallasRepository>();
             //services.AddScoped<EstadoCivilRepository>();
             services.AddScoped<PantallasPorRolRepository>();
-            //services.AddScoped<UsuarioRepository>();
+            services.AddScoped<UsuarioRepository>();
             //services.AddScoped<ModeloRepository>();
             //services.AddScoped<VehiculoRepository>();
             //services.AddScoped<MarcaRepository>();
