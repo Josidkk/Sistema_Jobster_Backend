@@ -57,5 +57,7 @@ public partial class tbPlazas
 
     public virtual ICollection<tbGuardados> tbGuardados { get; set; } = new List<tbGuardados>();
 
+    public virtual ICollection<tbRequisitos> tbRequisitos { get; set; } = new List<tbRequisitos>();
+
     public virtual ICollection<tbSolicitudes> tbSolicitudes { get; set; } = new List<tbSolicitudes>();
 }

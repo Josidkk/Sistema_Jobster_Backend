@@ -23,6 +23,10 @@ public partial class tbRequisitos
 
     public DateTime? Requ_FechaModificacion { get; set; }
 
+    public int? Plaz_Id { get; set; }
+
+    public virtual tbPlazas Plaz { get; set; }
+
     public virtual tbUsuarios Usua_CreacionNavigation { get; set; }
 
     public virtual tbUsuarios Usua_ModificacionNavigation { get; set; }

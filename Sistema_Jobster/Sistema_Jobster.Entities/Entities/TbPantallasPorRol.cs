@@ -21,5 +21,11 @@ public partial class tbPantallasPorRol
 
     public DateTime? PaRo_FechaModificacion { get; set; }
 
+    public virtual tbPantallas Pant { get; set; }
 
+    public virtual tbRoles Role { get; set; }
+
+    public virtual tbUsuarios Usua_CreacionNavigation { get; set; }
+
+    public virtual tbUsuarios Usua_ModificacionNavigation { get; set; }
 }
