@@ -246,21 +246,7 @@ public partial class db_ab9479_jobsterContext : DbContext
             entity.Property(e => e.PaRo_FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.PaRo_FechaModificacion).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Pant).WithMany(p => p.tbPantallasPorRol)
-                .HasForeignKey(d => d.Pant_Id)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Pant_Id");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.tbPantallasPorRol)
-                .HasForeignKey(d => d.Role_Id)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Role_Id");
-
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPantallasPorRolUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPantallasPorRolUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Acce_tbPantallasPorRol_Usua_Modificacion");
+           
         });
 
         modelBuilder.Entity<tbPersonas>(entity =>
@@ -303,24 +289,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.EsCi).WithMany(p => p.tbPersonas)
-                .HasForeignKey(d => d.EsCi_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Gral_tbPersonas_Gral_tbEstadosCiviles_EsCi_Id");
-
-            entity.HasOne(d => d.Muni_CodigoNavigation).WithMany(p => p.tbPersonas)
-                .HasForeignKey(d => d.Muni_Codigo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Gral_tbPersonas_Gral_tbMunicipios_Muni_Codigo");
-
-            entity.HasOne(d => d.Usua_CreacionNavigation).WithMany(p => p.tbPersonasUsua_CreacionNavigation)
-                .HasForeignKey(d => d.Usua_Creacion)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Gral_tbPersonas_Acce_tbUsuarios_Usua_Creacion");
-
-            entity.HasOne(d => d.Usua_ModificacionNavigation).WithMany(p => p.tbPersonasUsua_ModificacionNavigation)
-                .HasForeignKey(d => d.Usua_Modificacion)
-                .HasConstraintName("FK_Gral_tbPersonas_Acce_tbUsuarios_Usua_Modificacion");
+    
         });
 
         modelBuilder.Entity<tbPlazas>(entity =>
@@ -526,10 +495,7 @@ public partial class db_ab9479_jobsterContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Pers).WithMany(p => p.tbUsuarios)
-                .HasForeignKey(d => d.Pers_Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Acce_tbUsuarios_Gral_tbPersonas_Pers_Id");
+     
 
             entity.HasOne(d => d.Role).WithMany(p => p.tbUsuarios)
                 .HasForeignKey(d => d.Role_Id)

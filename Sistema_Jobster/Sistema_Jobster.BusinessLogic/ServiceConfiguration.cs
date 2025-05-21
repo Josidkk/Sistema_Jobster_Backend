@@ -18,6 +18,7 @@ namespace Sistema_Jobster.BusinessLogic
             Sistema_JobsterContext.BuildConnectionString(connectionString);
 
             services.AddScoped<CargoRepository>();
+            services.AddScoped<PersonaRepository>();
             //services.AddScoped<DepartamentoRepository>();
             //services.AddScoped<MunicipioRepository>();
 
@@ -27,7 +28,7 @@ namespace Sistema_Jobster.BusinessLogic
             //services.AddScoped<PantallasRepository>();
             //services.AddScoped<RolesPorPantallasRepository>();
             //services.AddScoped<EstadoCivilRepository>();
-            //services.AddScoped<RolesRepository>();
+            services.AddScoped<PantallasPorRolRepository>();
             //services.AddScoped<UsuarioRepository>();
             //services.AddScoped<ModeloRepository>();
             //services.AddScoped<VehiculoRepository>();
@@ -43,7 +44,7 @@ namespace Sistema_Jobster.BusinessLogic
         public static void BusinessLogic(this IServiceCollection services)
         {
             services.AddScoped<PlazaServices>();
-            //services.AddScoped<GeneralServices>();
+            services.AddScoped<GeneralService>();
             services.AddScoped<AccesoService>();
         }
     }

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore.Storage;
 //using Sistema_Jobster.DataAccess.Repositories;
+using Sistema_Jobster.DataAccess.Repositories;
 using Sistema_Jobster.Entities;
+using Sistema_Jobster.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +15,19 @@ namespace Sistema_Jobster.BusinessLogic.Services
         //private readonly RolesRepository _rolesRepository;
         //private readonly PantallasRepository _pantallasRepository;
         //private readonly UsuarioRepository _UsuarioRepository;
+        private readonly PantallasPorRolRepository _pantallasPorRolRepository;
 
         //public AccesoService(RolesPorPantallasRepository rolesPorPantallasRepository,
         //                    RolesRepository rolesRepository,
         //                    PantallasRepository pantallasRepository,
         //                    UsuarioRepository UsuarioRepository)
-        public AccesoService()
+        public AccesoService(PantallasPorRolRepository pantallasPorRolRepository)
         {
             //_rolesPorPantallasRepository = rolesPorPantallasRepository;
             //_rolesRepository = rolesRepository;
             //_pantallasRepository = pantallasRepository;
             //_UsuarioRepository = UsuarioRepository;
+            _pantallasPorRolRepository = pantallasPorRolRepository;
         }
 
         #region Roles
@@ -99,5 +103,37 @@ namespace Sistema_Jobster.BusinessLogic.Services
         //}
 
         #endregion Roles
+
+        #region PantallasPorRol
+
+        public ServiceResult InsertarPantallaPorRol(tbPantallasPorRol item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var respuesta = _pantallasPorRolRepository.Insert(item);
+                return result.Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult EliminarPantallaPorRol(tbPantallasPorRol item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var respuesta = _pantallasPorRolRepository.Delete(item);
+                return result.Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        #endregion PantallasPorRol
     }
 }
