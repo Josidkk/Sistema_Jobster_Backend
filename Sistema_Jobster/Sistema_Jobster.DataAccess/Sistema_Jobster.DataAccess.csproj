@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Sistema_Jobster.Entities\Sistema_Jobster.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositorios\" />
+  </ItemGroup>
+
 </Project>
