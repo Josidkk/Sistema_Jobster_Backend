@@ -18,6 +18,14 @@ namespace Sistema_Jobster.BusinessLogic
             Sistema_JobsterContext.BuildConnectionString(connectionString);
 
             services.AddScoped<CargoRepository>();
+            services.AddScoped<CategoriaRepository>();
+            services.AddScoped<PlazaRepository>();
+            services.AddScoped<TipoContratoRepository>();
+
+            services.AddScoped<RequisitoRepository>();
+            services.AddScoped<SolicitudRepository>();
+            services.AddScoped<GuardadoRepository>();
+
             //services.AddScoped<DepartamentoRepository>();
             //services.AddScoped<MunicipioRepository>();
 

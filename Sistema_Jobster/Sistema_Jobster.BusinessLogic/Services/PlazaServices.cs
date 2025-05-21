@@ -12,15 +12,31 @@ namespace Sistema_Jobster.BusinessLogic.Services
     public class PlazaServices
     {
         private readonly CargoRepository _cargoRepository;
+        private readonly CategoriaRepository _categoriaRepository;
+        private readonly PlazaRepository _plazaRepository;
+        private readonly TipoContratoRepository _tipoContratoRepository;
+        private readonly SolicitudRepository _solicitudRepository;
+        private readonly RequisitoRepository _requisitoRepository;
+        private readonly GuardadoRepository _guardadoRepository;
 
         public PlazaServices(
-            CargoRepository cargoRepository
+            CargoRepository cargoRepository,
+            CategoriaRepository categoriaRepository,
+            PlazaRepository plazaRepository,
+            TipoContratoRepository tipoContratoRepository,
+            SolicitudRepository solicitudRepository,
+            RequisitoRepository requisitoRepository,
+            GuardadoRepository guardadoRepository
 
         )
         {
-            //_categoriaRepository = categoriaRepository;
             _cargoRepository = cargoRepository;
-
+            _categoriaRepository = categoriaRepository;
+            _plazaRepository = plazaRepository;
+            _tipoContratoRepository = tipoContratoRepository;
+            _solicitudRepository = solicitudRepository;
+            _requisitoRepository = requisitoRepository;
+            _guardadoRepository = guardadoRepository;
         }
 
         #region cargos
@@ -109,8 +125,267 @@ namespace Sistema_Jobster.BusinessLogic.Services
         #endregion
 
 
+        #region Categorias
+        public IEnumerable<tbCategorias> ListCategoria()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _categoriaRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbCategorias> categorias = null;
+                return categorias;
+            }
+        }
+        public IEnumerable<tbCategorias> BuscarCategoria(tbCategorias item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _categoriaRepository.Find(item);
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbCategorias> categoria = null;
+                return categoria;
+            }
+        }
+        public ServiceResult InsertarCategoria(tbCategorias item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _categoriaRepository.Insert(item);
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult EliminarCategoria(tbCategorias item)
+        {
+            var result = new ServiceResult();
+
+            try
+            {
+                int returnCode = _categoriaRepository.Delete(item).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("Categoría eliminada con éxito.");
+                    case 2:
+                        return result.Warning("Categoría en uso, no se puede eliminar.");
+                    case -1:
+                        return result.Error("Error al eliminar la categoría.");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
 
 
+        public ServiceResult ActualizarCategoria(tbCategorias item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _categoriaRepository.Update(item);
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+
+
+
+
+        #endregion
+
+
+        #region Plazas
+        public IEnumerable<tbPlazas> ListPlazas()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _plazaRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbPlazas> plazas = new List<tbPlazas>();
+                return plazas;
+            }
+        }
+
+        public ServiceResult InsertPlaza(tbPlazas Plaza)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _plazaRepository.Insert(Plaza);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult UpdatePlaza(tbPlazas Plaza)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _plazaRepository.Update(Plaza);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+        public ServiceResult DeletePlaza(tbPlazas Plaza)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                int returnCode = _plazaRepository.Delete(Plaza).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("1");
+                    case 2:
+                        return result.Warning("2");
+                    case -1:
+                        return result.Error("-1");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
+
+
+        public IEnumerable<tbPlazas> FindPlaza(tbPlazas Plaza)
+        {
+            //var result = new ServiceResult();
+            try
+            {
+                var result = _plazaRepository.Find(Plaza);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+
+        #region TiposContrato
+        public IEnumerable<tbTiposContrato> ListTiposContrato()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _tipoContratoRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbTiposContrato> ticos = null;
+                return ticos;
+            }
+        }
+
+        public ServiceResult InsertTipoContrato(tbTiposContrato TipoContrato)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _tipoContratoRepository.Insert(TipoContrato);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult UpdateTipoContrato(tbTiposContrato TipoContrato)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _tipoContratoRepository.Update(TipoContrato);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+        public ServiceResult DeleteTipoContrato(tbTiposContrato TipoContrato)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                int returnCode = _tipoContratoRepository.Delete(TipoContrato).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("1");
+                    case 2:
+                        return result.Warning("2");
+                    case -1:
+                        return result.Error("-1");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
+
+
+        public IEnumerable<tbTiposContrato> FindTipoContrato(tbTiposContrato TipoContrato)
+        {
+            //var result = new ServiceResult();
+            try
+            {
+                var result = _tipoContratoRepository.Find(TipoContrato);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
 
 
     }
