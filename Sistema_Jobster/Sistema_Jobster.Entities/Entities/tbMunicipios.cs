@@ -5,25 +5,29 @@ using System.Collections.Generic;
 
 namespace Sistema_Jobster.Entities.Entities;
 
-public partial class tbTiposContrato
+public partial class tbMunicipios
 {
-    public int TiCo_Id { get; set; }
+    public string Muni_Codigo { get; set; }
 
-    public string TiCo_Descripcion { get; set; }
+    public string Muni_Descripcion { get; set; }
 
-    public bool? TiCo_Estado { get; set; }
+    public string Depa_Codigo { get; set; }
 
-    public int Usua_Creacion { get; set; }
+    public DateTime? Muni_FechaCreacion { get; set; }
 
-    public DateTime TiCo_FechaCreacion { get; set; }
+    public DateTime? Muni_FechaModificacion { get; set; }
+
+    public int? Usua_Creacion { get; set; }
 
     public int? Usua_Modificacion { get; set; }
 
-    public DateTime? TiCo_FechaModificacion { get; set; }
+    public virtual tbDepartamentos Depa_CodigoNavigation { get; set; }
 
     public virtual tbUsuarios Usua_CreacionNavigation { get; set; }
 
     public virtual tbUsuarios Usua_ModificacionNavigation { get; set; }
+
+    public virtual ICollection<tbPersonas> tbPersonas { get; set; } = new List<tbPersonas>();
 
     public virtual ICollection<tbPlazas> tbPlazas { get; set; } = new List<tbPlazas>();
 }

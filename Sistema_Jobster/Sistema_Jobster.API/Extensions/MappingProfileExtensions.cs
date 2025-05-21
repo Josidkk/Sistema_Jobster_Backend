@@ -1,6 +1,8 @@
 using AutoMapper;
+using Sistema_Jobster.API;
 using Sistema_Jobster.API.Models;
 using Sistema_Jobster.Entities;
+using Sistema_Jobster.Entities.Entities;
 
 namespace Sistema_Jobster.API.Extensions
 {
@@ -20,7 +22,7 @@ namespace Sistema_Jobster.API.Extensions
             //CreateMap<tbClientes, ClientesViewModel>().ReverseMap();
             //CreateMap<tbEmpleados, EmpleadosViewModel>().ReverseMap();
 
-            //CreateMap<tbCargos, CargoViewModel>().ReverseMap();
+            CreateMap<tbCargos, CargoViewModel>().ReverseMap();
             //CreateMap<RolesPorPantallasViewModel, tbPantallasPorRol>().ReverseMap();
             //CreateMap<tbPantallas, PantallasViewModel>().ReverseMap();
             //CreateMap<tbRoles, RolesViewModel>().ReverseMap();

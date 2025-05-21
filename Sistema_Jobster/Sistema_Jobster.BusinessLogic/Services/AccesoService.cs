@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore.Storage;
-using Sistema_Jobster.DataAccess.Repositorios;
+//using Sistema_Jobster.DataAccess.Repositories;
 using Sistema_Jobster.Entities;
 using System;
 using System.Collections.Generic;

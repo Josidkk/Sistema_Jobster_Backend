@@ -1,16 +1,17 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Sistema_Jobster.DataAccess.Context;
+
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Sistema_Jobster.DataAccess
 {
-    public class Sistema_JobsterContext : db_ab9479_jobsterContext
+    public class Sistema_JobsterContext: db_ab9479_jobsterContext
     {
         public static string ConnectionString { get; set; }
 

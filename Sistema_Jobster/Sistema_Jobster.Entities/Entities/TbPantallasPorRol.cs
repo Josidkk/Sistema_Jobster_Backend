@@ -5,27 +5,27 @@ using System.Collections.Generic;
 
 namespace Sistema_Jobster.Entities.Entities;
 
-public partial class TbPantallasPorRol
+public partial class tbPantallasPorRol
 {
-    public int PaRoId { get; set; }
+    public int PaRo_Id { get; set; }
 
-    public int? PantId { get; set; }
+    public int? Pant_Id { get; set; }
 
-    public int? RoleId { get; set; }
+    public int? Role_Id { get; set; }
 
-    public int? UsuaCreacion { get; set; }
+    public int? Usua_Creacion { get; set; }
 
-    public DateTime? PaRoFechaCreacion { get; set; }
+    public DateTime? PaRo_FechaCreacion { get; set; }
 
-    public int? UsuaModificacion { get; set; }
+    public int? Usua_Modificacion { get; set; }
 
-    public DateTime? PaRoFechaModificacion { get; set; }
+    public DateTime? PaRo_FechaModificacion { get; set; }
 
-    public virtual TbPantalla Pant { get; set; }
+    public virtual tbPantallas Pant { get; set; }
 
-    public virtual TbRole Role { get; set; }
+    public virtual tbRoles Role { get; set; }
 
-    public virtual TbUsuario UsuaCreacionNavigation { get; set; }
+    public virtual tbUsuarios Usua_CreacionNavigation { get; set; }
 
-    public virtual TbUsuario UsuaModificacionNavigation { get; set; }
+    public virtual tbUsuarios Usua_ModificacionNavigation { get; set; }
 }

@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sistema_Jobster.BusinessLogic.Services;
 using Sistema_Jobster.DataAccess;
 using Sistema_Jobster.DataAccess.Context;
-using Sistema_Jobster.DataAccess.Repositorios;
+using Sistema_Jobster.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +16,11 @@ namespace Sistema_Jobster.BusinessLogic
         public static void DataAccess(this IServiceCollection services, string connectionString)
         {
             Sistema_JobsterContext.BuildConnectionString(connectionString);
+
+            services.AddScoped<CargoRepository>();
             //services.AddScoped<DepartamentoRepository>();
             //services.AddScoped<MunicipioRepository>();
-            //services.AddScoped<CargoRepository>();
+
             //services.AddScoped<ClienteRepository>();
             //services.AddScoped<EmpleadoRepository>();
             //services.AddScoped<HomeRepository>();
@@ -40,8 +42,9 @@ namespace Sistema_Jobster.BusinessLogic
 
         public static void BusinessLogic(this IServiceCollection services)
         {
+            services.AddScoped<PlazaServices>();
             //services.AddScoped<GeneralServices>();
-            //services.AddScoped<AccesoService>();
+            services.AddScoped<AccesoService>();
         }
     }
 }

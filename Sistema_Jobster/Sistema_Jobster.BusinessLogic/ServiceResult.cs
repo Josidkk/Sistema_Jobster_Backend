@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Sistema_CrediRapid.BusinessLogic
+namespace Sistema_Jobster.BusinessLogic
 {
     public class ServiceResult
     {

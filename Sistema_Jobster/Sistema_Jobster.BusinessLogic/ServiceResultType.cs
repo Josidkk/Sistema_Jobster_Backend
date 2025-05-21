@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sistema_CrediRapid.BusinessLogic
+namespace Sistema_Jobster.BusinessLogic
 {
     public enum ServiceResultType
     {
