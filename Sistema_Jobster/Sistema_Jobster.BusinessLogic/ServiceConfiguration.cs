@@ -19,6 +19,14 @@ namespace Sistema_Jobster.BusinessLogic
 
             services.AddScoped<CargoRepository>();
             services.AddScoped<PersonaRepository>();
+            services.AddScoped<CategoriaRepository>();
+            services.AddScoped<PlazaRepository>();
+            services.AddScoped<TipoContratoRepository>();
+
+            services.AddScoped<RequisitoRepository>();
+            services.AddScoped<SolicitudRepository>();
+            services.AddScoped<GuardadoRepository>();
+
             //services.AddScoped<DepartamentoRepository>();
             //services.AddScoped<MunicipioRepository>();
 
