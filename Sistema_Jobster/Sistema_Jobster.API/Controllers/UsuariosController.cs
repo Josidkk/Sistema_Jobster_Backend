@@ -23,6 +23,8 @@ namespace Sistema_Jobster.API.Controllers
         public IActionResult Listar()
         {
             var response = _accesoService.ListarUsuarios();
+            response.Data = _mapper.Map<IEnumerable<UsuarioViewModel>>((IEnumerable<tbUsuarios>)response.Data);
+
             return Ok(response);
         }
 
