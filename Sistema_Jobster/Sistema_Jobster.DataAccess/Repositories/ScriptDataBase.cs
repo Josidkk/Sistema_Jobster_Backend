@@ -84,6 +84,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
         #region  RolesPorPantallas
         public static string RolesPorPantallas_Eliminar = "[Acce].[SP_PantallaPorRol_Eliminar]";
         public static string RolesPorPantallas_Insertar = "[Acce].[SP_PantallaPorRol_Insertar]";
+        public static string Pantallas_Listar = "[Acce].[SP_Pantallas_Listar]";
         #endregion
         #region Generales
 

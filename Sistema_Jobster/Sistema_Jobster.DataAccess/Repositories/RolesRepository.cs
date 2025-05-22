@@ -84,5 +84,15 @@ namespace Sistema_Jobster.DataAccess.Repositories
             string mensaje = (result == 0) ? "Error en base de datos" : "Exito";
             return new RequestStatus { CodeStatus = result, MessageStatus = mensaje };
         }
+
+        public IEnumerable<tbPantallas> ListPantalla()
+        {
+            using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
+            var result = db.Query<tbPantallas>(ScriptDataBase.Pantallas_Listar, commandType: System.Data.CommandType.StoredProcedure);
+            return result;
+
+        }
+
+
     }
 }

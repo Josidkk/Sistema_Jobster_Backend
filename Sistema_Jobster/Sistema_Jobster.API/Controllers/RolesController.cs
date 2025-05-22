@@ -39,6 +39,15 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("ListarPantallas")]
+        public IActionResult ListarPantallas()
+        {
+            var result = _accesoServices.ListarPantallas();
+            result.Data = _mapper.Map<IEnumerable<PantallasViewModel>>((IEnumerable<tbPantallas>)result.Data);
+            return Ok(result);
+        }
+
+
 
         [HttpPost("InsertarRoles")]
         public IActionResult Insertar([FromBody] RolesViewModel item)

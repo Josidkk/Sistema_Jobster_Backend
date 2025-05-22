@@ -65,6 +65,22 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
+        public ServiceResult ListarPantallas()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _rolesRepository.ListPantalla();
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+
+
         public ServiceResult EditarRol(tbRoles item)
         {
             var result = new ServiceResult();
