@@ -8,10 +8,12 @@ namespace Sistema_Jobster.BusinessLogic.Services
     public class GeneralService
     {
         private readonly PersonaRepository _personaRepository;
+        private readonly GeneralesRepository _generalesRepository;
 
-        public GeneralService(PersonaRepository personaRepository)
+        public GeneralService(PersonaRepository personaRepository, GeneralesRepository generalesRepository)
         {
             _personaRepository = personaRepository;
+            _generalesRepository = generalesRepository;
         }
 
         #region Personas
@@ -87,5 +89,62 @@ namespace Sistema_Jobster.BusinessLogic.Services
         }
 
         #endregion Personas
+
+        #region Departamentos
+
+        public IEnumerable<tbDepartamentos> ListDepartamentos()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _generalesRepository.ListDepartamentos();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbDepartamentos> departamentos = new List<tbDepartamentos>();
+                return departamentos;
+            }
+        }
+
+        #endregion
+
+        #region Municipios
+
+        public IEnumerable<tbMunicipios> ListMunicipios()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _generalesRepository.ListMunicipios();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbMunicipios> municipios = new List<tbMunicipios>();
+                return municipios;
+            }
+        }
+
+        #endregion
+
+        #region EstadosCiviles
+
+        public IEnumerable<tbEstadosCiviles> ListEstadosCiviles()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _generalesRepository.ListEstadosCiviles();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbEstadosCiviles> estadosCiviles = new List<tbEstadosCiviles>();
+                return estadosCiviles;
+            }
+        }
+
+        #endregion
     }
 }

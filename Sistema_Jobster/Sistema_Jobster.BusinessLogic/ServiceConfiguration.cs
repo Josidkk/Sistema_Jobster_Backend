@@ -27,6 +27,8 @@ namespace Sistema_Jobster.BusinessLogic
             services.AddScoped<SolicitudRepository>();
             services.AddScoped<GuardadoRepository>();
 
+            services.AddScoped<GeneralesRepository>();
+
             //services.AddScoped<DepartamentoRepository>();
             //services.AddScoped<MunicipioRepository>();
 

@@ -77,6 +77,17 @@ namespace Sistema_Jobster.DataAccess.Repositories
         public static string Guardado_Actualizar    = "[Plaz].[SP_Guardados_Actualizar]";
         #endregion
 
+        #region Generales
+
+        public static string Departamentos_Listar = "[Gral].[SP_Departamentos_Listar]";
+        public static string Municipios_Listar = "[Gral].[SP_Municipios_Listar]";
+        public static string EstadosCiviles_Listar = "[Gral].[SP_EstadosCiviles_Listar]";
+
+        #endregion
+
+
+
+
 
     }
 
