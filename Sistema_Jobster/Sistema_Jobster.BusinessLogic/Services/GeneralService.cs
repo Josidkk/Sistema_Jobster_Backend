@@ -92,18 +92,17 @@ namespace Sistema_Jobster.BusinessLogic.Services
 
         #region Departamentos
 
-        public IEnumerable<tbDepartamentos> ListDepartamentos()
+        public ServiceResult ListarDepartamentos()
         {
             var result = new ServiceResult();
             try
             {
                 var list = _generalesRepository.ListDepartamentos();
-                return list;
+                return result.Ok(list);
             }
             catch (Exception ex)
             {
-                IEnumerable<tbDepartamentos> departamentos = new List<tbDepartamentos>();
-                return departamentos;
+                return result.Error(ex.Message);
             }
         }
 
@@ -111,18 +110,17 @@ namespace Sistema_Jobster.BusinessLogic.Services
 
         #region Municipios
 
-        public IEnumerable<tbMunicipios> ListMunicipios()
+        public ServiceResult ListarMunicipios()
         {
             var result = new ServiceResult();
             try
             {
                 var list = _generalesRepository.ListMunicipios();
-                return list;
+                return result.Ok(list);
             }
             catch (Exception ex)
             {
-                IEnumerable<tbMunicipios> municipios = new List<tbMunicipios>();
-                return municipios;
+                return result.Error(ex.Message);
             }
         }
 
@@ -130,20 +128,20 @@ namespace Sistema_Jobster.BusinessLogic.Services
 
         #region EstadosCiviles
 
-        public IEnumerable<tbEstadosCiviles> ListEstadosCiviles()
+        public ServiceResult ListarEstadosCiviles()
         {
             var result = new ServiceResult();
             try
             {
                 var list = _generalesRepository.ListEstadosCiviles();
-                return list;
+                return result.Ok(list);
             }
             catch (Exception ex)
             {
-                IEnumerable<tbEstadosCiviles> estadosCiviles = new List<tbEstadosCiviles>();
-                return estadosCiviles;
+                return result.Error(ex.Message);
             }
         }
+
 
         #endregion
     }
