@@ -26,25 +26,45 @@ namespace Sistema_Jobster.API.Controllers
         [HttpGet("ListarEstadosCiviles")]
         public IActionResult ListarEstadosCiviles()
         {
-            var result = _generalService.ListEstadosCiviles();
-            var mapped = _mapper.Map<IEnumerable<EstadoCivilViewModel>>(result);
-            return Ok(mapped);
+            var result = _generalService.ListarEstadosCiviles();
+            try
+            {
+                result.Data = _mapper.Map<IEnumerable<EstadoCivilViewModel>>(result.Data);
+            }
+            catch (Exception)
+            {
+            }
+            
+            return Ok(result);
         }
 
         [HttpGet("ListarDepartamentos")]
         public IActionResult ListarDepartamentos()
         {
-            var result = _generalService.ListDepartamentos();
-            var mapped = _mapper.Map<IEnumerable<DepartamentoViewModel>>(result);
-            return Ok(mapped);
+            var result = _generalService.ListarDepartamentos();
+
+            try
+            {
+                result.Data = _mapper.Map<IEnumerable<DepartamentoViewModel>>(result.Data);
+            }
+            catch (Exception)
+            {
+            }
+            return Ok(result);
         }
 
         [HttpGet("ListarMunicipios")]
         public IActionResult ListarMunicipios()
         {
-            var result = _generalService.ListMunicipios();
-            var mapped = _mapper.Map<IEnumerable<MunicipioViewModel>>(result);
-            return Ok(mapped);
+            var result = _generalService.ListarMunicipios();
+            try
+            {
+                result.Data = _mapper.Map<IEnumerable<MunicipioViewModel>>(result.Data);
+            }
+            catch (Exception)
+            {
+            }
+            return Ok(result);
         }
 
         //public IActionResult Index()
