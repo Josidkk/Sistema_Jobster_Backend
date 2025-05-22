@@ -38,6 +38,10 @@ namespace Sistema_Jobster.API.Extensions
             CreateMap<tbSolicitudes, SolicitudViewModel>().ReverseMap();
             CreateMap<tbGuardados, GuardadoViewModel>().ReverseMap();
 
+            CreateMap<tbEstadosCiviles, EstadoCivilViewModel>().ReverseMap();
+            CreateMap<tbDepartamentos, DepartamentoViewModel>().ReverseMap();
+            CreateMap<tbMunicipios, MunicipioViewModel>().ReverseMap();
+
             //CreateMap<RolesPorPantallasViewModel, tbPantallasPorRol>().ReverseMap();
             //CreateMap<tbPantallas, PantallasViewModel>().ReverseMap();
             //CreateMap<tbRoles, RolesViewModel>().ReverseMap();
