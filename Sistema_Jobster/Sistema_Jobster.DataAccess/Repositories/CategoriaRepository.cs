@@ -32,7 +32,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
             };
         }
 
-        public IEnumerable<tbCategorias> Find(tbCategorias? item)
+        public IEnumerable<tbCategorias> Find(tbCategorias item)
         {
             var parameter = new DynamicParameters();
             parameter.Add("@Cate_Id", item.Cate_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);

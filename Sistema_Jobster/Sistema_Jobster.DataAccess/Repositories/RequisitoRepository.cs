@@ -55,6 +55,9 @@ namespace Sistema_Jobster.DataAccess.Repositories
             var parameter = new DynamicParameters();
 
             parameter.Add("@Requ_Descripcion", item.Requ_Descripcion, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+            parameter.Add("@Requ_Informacion", item.Requ_Informacion, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+            parameter.Add("@Plaz_Id", item.Plaz_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
+
             parameter.Add("@Requ_FechaCreacion", DateTime.Now, System.Data.DbType.DateTime, System.Data.ParameterDirection.Input);
             parameter.Add("@Usua_Creacion", 1, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
 
@@ -78,6 +81,9 @@ namespace Sistema_Jobster.DataAccess.Repositories
             var parameter = new DynamicParameters();
             parameter.Add("@Requ_Id", item.Requ_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
             parameter.Add("@Requ_Descripcion", item.Requ_Descripcion, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+            parameter.Add("@Requ_Informacion", item.Requ_Informacion, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+            parameter.Add("@Plaz_Id", item.Plaz_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
+
             parameter.Add("@Requ_FechaModificacion", DateTime.Now, System.Data.DbType.DateTime, System.Data.ParameterDirection.Input);
             parameter.Add("@Usua_Modificacion", 1, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
 

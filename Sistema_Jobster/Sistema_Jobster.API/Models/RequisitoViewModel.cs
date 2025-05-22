@@ -11,6 +11,7 @@
         public bool? Requ_Estado { get; set; }
 
         public int Usua_Creacion { get; set; }
+        public int? Plaz_Id { get; set; }
 
         public DateTime Requ_FechaCreacion { get; set; }
 

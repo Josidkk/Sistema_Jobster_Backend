@@ -50,7 +50,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
             catch (Exception ex)
             {
-                IEnumerable<tbCargos> carg = null;
+                IEnumerable<tbCargos> carg = new List<tbCargos>();
                 return carg;
             }
         }
@@ -118,7 +118,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
             catch (Exception ex)
             {
-                return null;
+                return new List<tbCargos>();
             }
         }
 
@@ -136,7 +136,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
             catch (Exception ex)
             {
-                IEnumerable<tbCategorias> categorias = null;
+                IEnumerable<tbCategorias> categorias = new List<tbCategorias>();
                 return categorias;
             }
         }
@@ -386,6 +386,265 @@ namespace Sistema_Jobster.BusinessLogic.Services
         }
 
         #endregion
+
+
+        #region Requisitos
+        public IEnumerable<tbRequisitos> ListRequisitos()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _requisitoRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbRequisitos> requisitos = null;
+                return requisitos;
+            }
+        }
+
+        public ServiceResult InsertRequisito(tbRequisitos Requisito)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _requisitoRepository.Insert(Requisito);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult UpdateRequisito(tbRequisitos Requisito)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _requisitoRepository.Update(Requisito);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+        public ServiceResult DeleteRequisito(tbRequisitos Requisito)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                int returnCode = _requisitoRepository.Delete(Requisito).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("1");
+                    case 2:
+                        return result.Warning("2");
+                    case -1:
+                        return result.Error("-1");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
+
+
+        public IEnumerable<tbRequisitos> FindRequisito(tbRequisitos Requisito)
+        {
+            //var result = new ServiceResult();
+            try
+            {
+                var result = _requisitoRepository.Find(Requisito);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+
+        #region Solicitudes
+        public IEnumerable<tbSolicitudes> ListSolicitudes()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _solicitudRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbSolicitudes> carg = null;
+                return carg;
+            }
+        }
+
+        public ServiceResult InsertSolicitud(tbSolicitudes Solicitud)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _solicitudRepository.Insert(Solicitud);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult UpdateSolicitud(tbSolicitudes Solicitud)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _solicitudRepository.Update(Solicitud);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+        public ServiceResult DeleteSolicitud(tbSolicitudes Solicitud)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                int returnCode = _solicitudRepository.Delete(Solicitud).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("1");
+                    case 2:
+                        return result.Warning("2");
+                    case -1:
+                        return result.Error("-1");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
+
+
+        public IEnumerable<tbSolicitudes> FindSolicitud(tbSolicitudes Solicitud)
+        {
+            //var result = new ServiceResult();
+            try
+            {
+                var result = _solicitudRepository.Find(Solicitud);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+
+        #region Guardados
+        public IEnumerable<tbGuardados> ListGuardados()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _guardadoRepository.List();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                IEnumerable<tbGuardados> guardados = null;
+                return guardados;
+            }
+        }
+
+        public ServiceResult InsertGuardado(tbGuardados Guardado)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _guardadoRepository.Insert(Guardado);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult UpdateGuardado(tbGuardados Guardado)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _guardadoRepository.Update(Guardado);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+        public ServiceResult DeleteGuardado(tbGuardados Guardado)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                int returnCode = _guardadoRepository.Delete(Guardado).CodeStatus;
+
+                switch (returnCode)
+                {
+                    case 1:
+                        return result.Ok("1");
+                    case 2:
+                        return result.Warning("2");
+                    case -1:
+                        return result.Error("-1");
+                    default:
+                        return result.Error("Código de retorno desconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return result.Error("Ocurrió un error inesperado: " + ex.Message);
+            }
+        }
+
+
+        public IEnumerable<tbGuardados> FindGuardado(tbGuardados Guardado)
+        {
+            //var result = new ServiceResult();
+            try
+            {
+                var result = _guardadoRepository.Find(Guardado);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
 
 
     }
