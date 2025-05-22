@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Sistema_Jobster.API.Helpers;
 using Sistema_Jobster.API.Models;
 using Sistema_Jobster.BusinessLogic.Services;
 using Sistema_Jobster.Entities.Entities;
 
 namespace Sistema_Jobster.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [ApiKey]
     public class TiposContratoController : Controller
     {
         private readonly PlazaServices _plazaServices;
@@ -17,6 +21,7 @@ namespace Sistema_Jobster.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             return View();

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Sistema_Jobster.API.Helpers;
 using Sistema_Jobster.API.Models;
 using Sistema_Jobster.BusinessLogic.Services;
 using Sistema_Jobster.Entities.Entities;
@@ -8,6 +9,9 @@ using System.Runtime;
 
 namespace Sistema_Jobster.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [ApiKey]
     public class CargosController : Controller
     {
 
@@ -20,6 +24,7 @@ namespace Sistema_Jobster.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             return View();
