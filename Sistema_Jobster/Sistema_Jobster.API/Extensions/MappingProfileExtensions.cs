@@ -23,6 +23,9 @@ namespace Sistema_Jobster.API.Extensions
             //CreateMap<tbEmpleados, EmpleadosViewModel>().ReverseMap();
 
             CreateMap<tbCargos, CargoViewModel>().ReverseMap();
+
+            CreateMap<tbRoles, RolesViewModel>().ReverseMap();
+
             CreateMap<tbPersonas, PersonaViewModel>().ReverseMap();
             CreateMap<PantallasPorRolViewModel, tbPantallasPorRol>().ReverseMap();
             CreateMap<tbUsuarios, UsuarioViewModel>().ReverseMap();

@@ -17,12 +17,14 @@ namespace Sistema_Jobster.BusinessLogic.Services
         //private readonly UsuarioRepository _UsuarioRepository;
         private readonly PantallasPorRolRepository _pantallasPorRolRepository;
         private readonly UsuarioRepository _usuarioRepository;
+        private readonly RolesRepository _rolesRepository;
+
 
         //public AccesoService(RolesPorPantallasRepository rolesPorPantallasRepository,
         //                    RolesRepository rolesRepository,
         //                    PantallasRepository pantallasRepository,
         //                    UsuarioRepository UsuarioRepository)
-        public AccesoService(PantallasPorRolRepository pantallasPorRolRepository, UsuarioRepository usuarioRepository)
+        public AccesoService(PantallasPorRolRepository pantallasPorRolRepository, UsuarioRepository usuarioRepository, RolesRepository rolesRepository)
         {
             //_rolesPorPantallasRepository = rolesPorPantallasRepository;
             //_rolesRepository = rolesRepository;
@@ -30,79 +32,80 @@ namespace Sistema_Jobster.BusinessLogic.Services
             //_UsuarioRepository = UsuarioRepository;
             _pantallasPorRolRepository = pantallasPorRolRepository;
             _usuarioRepository = usuarioRepository;
+            _rolesRepository = rolesRepository;
         }
 
         #region Roles
 
-        //public ServiceResult InsertarRol(tbRoles item)
-        //{
-        //    var result = new ServiceResult();
-        //    try
-        //    {
-        //        var nuevoRolId = _rolesRepository.Insert(item);
-        //        return result.Ok(nuevoRolId);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return result.Error(ex.Message);
-        //    }
-        //}
+        public ServiceResult InsertarRol(tbRoles item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var nuevoRolId = _rolesRepository.Insert(item);
+                return result.Ok(nuevoRolId);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
 
-        //public ServiceResult ListarRoles()
-        //{
-        //    var result = new ServiceResult();
-        //    try
-        //    {
-        //        var list = _rolesRepository.List();
-        //        return result.Ok(list);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return result.Error(ex.Message);
-        //    }
-        //}
+        public ServiceResult ListarRoles()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _rolesRepository.List();
+                return result.Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
 
-        //public ServiceResult EditarRol(tbRoles item)
-        //{
-        //    var result = new ServiceResult();
-        //    try
-        //    {
-        //        var edit = _rolesRepository.Edit(item);
-        //        return result.Ok(edit);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return result.Error(ex.Message);
-        //    }
-        //}
+        public ServiceResult EditarRol(tbRoles item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var edit = _rolesRepository.Update(item);
+                return result.Ok(edit);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
 
-        //public ServiceResult EliminarRol(tbRoles item)
-        //{
-        //    var result = new ServiceResult();
-        //    try
-        //    {
-        //        var delete = _rolesRepository.Delete(item);
-        //        return result.Ok(delete);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return result.Error(ex.Message);
-        //    }
-        //}
+        public ServiceResult EliminarRol(tbRoles item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var delete = _rolesRepository.Delete(item);
+                return result.Ok(delete);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
 
-        //public ServiceResult BuscarRol(tbRoles item)
-        //{
-        //    var result = new ServiceResult();
-        //    try
-        //    {
-        //        var roles = _rolesRepository.Find(item);
-        //        return result.Ok(roles);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return result.Error(ex.Message);
-        //    }
-        //}
+        public ServiceResult BuscarRol(tbRoles item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var roles = _rolesRepository.Find(item);
+                return result.Ok(roles);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
 
         #endregion Roles
 

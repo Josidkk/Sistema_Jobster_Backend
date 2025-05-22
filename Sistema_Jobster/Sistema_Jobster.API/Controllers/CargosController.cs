@@ -90,7 +90,5 @@ namespace Sistema_Jobster.API.Controllers
                 return BadRequest(new { Message = result.Message /*, ReturnCode = (int?)result.Data */ });
         }
 
-
-
     }
 }

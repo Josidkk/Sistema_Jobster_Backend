@@ -10,19 +10,15 @@ namespace Sistema_Jobster.DataAccess.Repositories
     {
 
         #region Cargos
-
         public static string Cargos_Listar    = "[Plaz].[SP_Cargos_Listar]";
         public static string Cargo_Insertar   = "[Plaz].[SP_Cargos_Insertar]";
         public static string Cargo_Actualizar = "[Plaz].[SP_Cargos_Actualizar]";
         public static string Cargo_Eliminar   = "[Plaz].[SP_Cargos_Eliminar]";
         public static string Cargo_Buscar     = "[Plaz].[SP_Cargos_Buscar]";
-
         #endregion
 
         #region pantallassegunrol
-
         public static string PantSel_Buscar = "[Acce].[SP_Pantallas_ListarSeleccionadas]";
-
         #endregion
 
         #region Categorias
@@ -75,6 +71,19 @@ namespace Sistema_Jobster.DataAccess.Repositories
         public static string Guardado_Eliminar      = "[Plaz].[SP_Guardados_Eliminar]";
         public static string Guardado_Insertar      = "[Plaz].[SP_Guardados_Insertar]";
         public static string Guardado_Actualizar    = "[Plaz].[SP_Guardados_Actualizar]";
+        #endregion
+
+        #region Roles
+        public static string Roles_Listar = "[Acce].[SP_Roles_Listar]";
+        public static string Roles_Buscar = "[Acce].[SP_Roles_Buscar]";
+        public static string Roles_Eliminar = "[Acce].[SP_Roles_Eliminar]";
+        public static string Roles_Insertar = "[Acce].[SP_Roles_Insertar]";
+        public static string Roles_Actualizar = "[Acce].[SP_Roles_Editar]";
+        #endregion
+
+        #region  RolesPorPantallas
+        public static string RolesPorPantallas_Eliminar = "[Acce].[SP_PantallaPorRol_Eliminar]";
+        public static string RolesPorPantallas_Insertar = "[Acce].[SP_PantallaPorRol_Insertar]";
         #endregion
 
 
