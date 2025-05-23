@@ -23,13 +23,13 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return result;
         }
 
-        public tbUsuarios IniciarSesion(tbUsuarios item)
+        public IEnumerable<tbUsuarios> IniciarSesion(tbUsuarios item)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var parameters = new DynamicParameters();
             parameters.Add("@Usua_Nombre", item.Usua_Nombre, System.Data.DbType.String, System.Data.ParameterDirection.Input);
-            parameters.Add("@Usua_Contrasena", item.Usua_Contrasena, System.Data.DbType.String, System.Data.ParameterDirection.Input);
-            var result = db.QueryFirstOrDefault<tbUsuarios>("[Acce].[SP_IniciarSesion]", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            parameters.Add("@Usua_Contrasena ", item.Usua_Contrasena, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+            var result = db.Query<tbUsuarios>("[Acce].[SP_IniciarSesion]", parameters, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
 
