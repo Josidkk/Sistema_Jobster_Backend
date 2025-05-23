@@ -18,6 +18,18 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.DataAccess(connectionString);
 builder.Services.BusinessLogic();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFlutter", policy =>
+    {
+        policy.SetIsOriginAllowed(origin => true)
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials()
+              .WithExposedHeaders("X-Api-Key");
+    });
+});
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -52,16 +64,6 @@ builder.Services.AddSingleton<ApiKeyAuthorizationFilter>();
 builder.Services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
 
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("http://localhost:4200/", policy =>
-//    {
-//        policy.AllowAnyOrigin()
-//              .AllowAnyMethod()
-//              .AllowAnyHeader();
-//    });
-//});
-
 builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile(typeof(MappingProfileExtensions));
@@ -87,11 +89,11 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowFlutter");
 app.UseAuthorization();
 
 app.MapControllers();
 
-//app.UseCors("http://localhost:4200/");
+
 
 app.Run();
