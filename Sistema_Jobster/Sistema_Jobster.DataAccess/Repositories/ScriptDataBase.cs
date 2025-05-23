@@ -79,6 +79,10 @@ namespace Sistema_Jobster.DataAccess.Repositories
         public static string Roles_Eliminar = "[Acce].[SP_Roles_Eliminar]";
         public static string Roles_Insertar = "[Acce].[SP_Roles_Insertar]";
         public static string Roles_Actualizar = "[Acce].[SP_Roles_Editar]";
+
+        public static string IniciarSesion = "[Acce].[SP_IniciarSesion]";
+
+
         #endregion
 
         #region  RolesPorPantallas
