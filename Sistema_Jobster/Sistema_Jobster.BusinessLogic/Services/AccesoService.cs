@@ -187,6 +187,20 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
+        public ServiceResult IniciarSesion(tbUsuarios usua)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var usuario = _usuarioRepository.IniciarSesion(usua);
+                return result.Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
         public ServiceResult InsertarUsuario(tbUsuarios usuario)
         {
             var result = new ServiceResult();

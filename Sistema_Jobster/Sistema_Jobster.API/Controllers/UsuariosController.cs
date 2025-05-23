@@ -37,6 +37,15 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(response);
         }
 
+
+        [HttpPost("IniciarSesion")]
+        public IActionResult IniciarSesion([FromBody] UsuarioViewModel usua)
+        {
+            var usuario = _mapper.Map<tbUsuarios>(usua);
+            var response = _accesoService.IniciarSesion(usuario);
+            return Ok(response);
+        }
+
         [HttpPost("Insertar")]
         public IActionResult Insertar([FromBody] UsuarioViewModel usuarioViewModel)
         {
