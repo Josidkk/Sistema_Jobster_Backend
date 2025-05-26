@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema_Jobster.Entities.Entities;
 
@@ -34,6 +35,15 @@ public partial class tbUsuarios
     public DateTime? Usua_FechaModificacion { get; set; }
 
     public bool? Usua_Estado { get; set; }
+
+    [NotMapped]
+    public string pers_Nombres { get; set; }
+
+    [NotMapped]
+    public string pers_Apellidos { get; set; }
+
+    [NotMapped]
+    public string role_Descripcion { get; set; }
 
     public virtual ICollection<tbUsuarios> InverseUsua_CreacionNavigation { get; set; } = new List<tbUsuarios>();
 
