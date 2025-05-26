@@ -26,6 +26,15 @@ public partial class tbUsuarios
 
     public int Role_Id { get; set; }
 
+    [NotMapped]
+    public string pers_Nombres { get; set; }
+
+    [NotMapped]
+    public string pers_Apellidos { get; set; }
+
+    [NotMapped]
+    public string role_Descripcion { get; set; }
+
     public int Usua_Creacion { get; set; }
 
     public DateTime Usua_FechaCreacion { get; set; }
@@ -36,14 +45,7 @@ public partial class tbUsuarios
 
     public bool? Usua_Estado { get; set; }
 
-    [NotMapped]
-    public string pers_Nombres { get; set; }
-
-    [NotMapped]
-    public string pers_Apellidos { get; set; }
-
-    [NotMapped]
-    public string role_Descripcion { get; set; }
+ 
 
     public virtual ICollection<tbUsuarios> InverseUsua_CreacionNavigation { get; set; } = new List<tbUsuarios>();
 
@@ -118,11 +120,6 @@ public partial class tbUsuarios
     public virtual ICollection<tbTiposContrato> tbTiposContratoUsua_CreacionNavigation { get; set; } = new List<tbTiposContrato>();
 
     public virtual ICollection<tbTiposContrato> tbTiposContratoUsua_ModificacionNavigation { get; set; } = new List<tbTiposContrato>();
-    [NotMapped]
-    public string Pers_Nombres { get; set; }
-    [NotMapped]
-    public string Pers_Apellidos { get; set; }
-    [NotMapped]
-    public string Role_Descripcion { get; set; }
+ 
 
 }

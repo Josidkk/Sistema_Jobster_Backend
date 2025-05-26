@@ -43,15 +43,9 @@ namespace Sistema_Jobster.API.Controllers
             var usuario = _mapper.Map<tbUsuarios>(usua);
 
             var response = _accesoService.IniciarSesion(usuario);
+            response.Data = _mapper.Map<IEnumerable<UsuarioViewModel>>((IEnumerable<tbUsuarios>)response.Data);
 
-            try
-            {
-                response.Data = _mapper.Map<List<UsuarioViewModel>>(response.Data);
-            }
-            catch (Exception)
-            {
-            }
-            return Ok(response.Data);
+            return Ok(response);
         }
 
         [HttpPost("Insertar")]
@@ -60,7 +54,7 @@ namespace Sistema_Jobster.API.Controllers
             var usuario = _mapper.Map<tbUsuarios>(usuarioViewModel);
             usuario.Usua_FechaCreacion = DateTime.Now;
             var response = _accesoService.InsertarUsuario(usuario);
-            return Ok(response);
+            return Ok(response.Data);
         }
 
         [HttpPut("Eliminar")]
