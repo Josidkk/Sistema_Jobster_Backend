@@ -7,11 +7,11 @@ namespace Sistema_Jobster.API.Models
     {
         public int Usua_Id { get; set; }
         public string Usua_Nombre { get; set; }
-        public string Usua_Contrasena { get; set; }
-        public string Usua_Correo { get; set; }
+        public string? Usua_Contrasena { get; set; }
+        public string? Usua_Correo { get; set; }
         public bool Usua_EsAdmin { get; set; }
         public bool Usua_Publicador { get; set; }
-        public string Usua_Imagen { get; set; }
+        public string? Usua_Imagen { get; set; }
         public int Pers_Id { get; set; }
 
         public int Role_Id { get; set; }

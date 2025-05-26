@@ -43,8 +43,14 @@ namespace Sistema_Jobster.API.Controllers
             var usuario = _mapper.Map<tbUsuarios>(usua);
 
             var response = _accesoService.IniciarSesion(usuario);
-            response.Data = _mapper.Map<IEnumerable<UsuarioViewModel>>((IEnumerable<tbUsuarios>)response.Data);
 
+            try
+            {
+                response.Data = _mapper.Map<List<UsuarioViewModel>>(response.Data);
+            }
+            catch (Exception)
+            {
+            }
             return Ok(response.Data);
         }
 
