@@ -15,11 +15,11 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return result;
         }
 
-        public tbUsuarios BuscarUsuario(int id)
+        public IEnumerable<tbUsuarios> BuscarUsuario(string id)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            var parameters = new { Usua_Id = id };
-            var result = db.QueryFirstOrDefault<tbUsuarios>("[Acce].[SP_Usuario_Buscar]", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            var parameters = new { Usua_Nombre = id };
+            var result = db.Query<tbUsuarios>("[Acce].[SP_Usuarios_Buscar]", parameters, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
 
@@ -32,7 +32,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
             var result = db.Query<tbUsuarios>("[Acce].[SP_IniciarSesion]", parameters, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
-
 
         public RequestStatus InsertarUsuario(tbUsuarios usuario)
         {
@@ -51,7 +50,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
             };
 
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            var result = db.Execute("[Acce].[SP_Usuario_Insertar]", parameters, commandType: System.Data.CommandType.StoredProcedure);
+            var result = db.Execute("[Acce].[SP_Usuarios_Insertar]", parameters, commandType: System.Data.CommandType.StoredProcedure);
 
             return new RequestStatus
             {

@@ -27,78 +27,78 @@ namespace Sistema_Jobster.API.Controllers
                 };
 
                 // Crear un cuerpo de correo más atractivo con HTML que incluya el token
-                string bodyHtml = $@" 
-                <!DOCTYPE html> 
-                <html> 
-                <head> 
-                    <style> 
-                        body {{ 
-                            font-family: Arial, sans-serif; 
-                            line-height: 1.6; 
-                            color: #333; 
-                        }} 
-                        .container {{ 
-                            max-width: 600px; 
-                            margin: 0 auto; 
-                            padding: 20px; 
-                            border: 1px solid #ddd; 
-                            border-radius: 5px; 
-                        }} 
-                        .header {{ 
-                            background-color: #0066cc; 
-                            color: white; 
-                            padding: 15px; 
-                            text-align: center; 
-                            border-radius: 5px 5px 0 0; 
-                        }} 
-                        .content {{ 
-                            padding: 20px; 
-                        }} 
-                        .token-container {{ 
-                            background-color: #f5f5f5; 
-                            border: 1px solid #ddd; 
-                            border-radius: 5px; 
-                            padding: 15px; 
-                            margin: 20px 0; 
-                            text-align: center; 
-                        }} 
-                        .token {{ 
-                            font-size: 24px; 
-                            font-weight: bold; 
-                            color: #0066cc; 
-                            letter-spacing: 2px; 
-                        }} 
-                        .footer {{ 
-                            text-align: center; 
-                            margin-top: 20px; 
-                            font-size: 12px; 
-                            color: #777; 
-                        }} 
-                    </style> 
-                </head> 
-                <body> 
-                    <div class='container'> 
-                        <div class='header'> 
-                            <h2>Sistema Jobster</h2> 
-                        </div> 
-                        <div class='content'> 
-                            <p>Estimado(a) usuario,</p> 
-                            <p>Gracias por utilizar nuestros servicios. A continuación, encontrará su código de verificación:</p> 
-            
-                            <div class='token-container'> 
-                                <p>Su código es:</p> 
-                                <p class='token'>{token}</p> 
-                            </div> 
-            
-                            <p>Este código es válido por un tiempo limitado. Por favor, no comparta este código con nadie.</p> 
-                            <p>Si usted no solicitó este código, por favor ignore este mensaje.</p> 
-                        </div> 
-                        <div class='footer'> 
-                            <p>Este es un correo automático, por favor no responda a este mensaje.</p> 
-                            <p>&copy; {DateTime.Now.Year} Sistema Jobster. Todos los derechos reservados.</p> 
-                        </div> 
-                    </div> 
-                </body> 
+                string bodyHtml = $@"
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body {{
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                            color: #333;
+                        }}
+                        .container {{
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                        }}
+                        .header {{
+                            background-color: #0066cc;
+                            color: white;
+                            padding: 15px;
+                            text-align: center;
+                            border-radius: 5px 5px 0 0;
+                        }}
+                        .content {{
+                            padding: 20px;
+                        }}
+                        .token-container {{
+                            background-color: #f5f5f5;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            padding: 15px;
+                            margin: 20px 0;
+                            text-align: center;
+                        }}
+                        .token {{
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #0066cc;
+                            letter-spacing: 2px;
+                        }}
+                        .footer {{
+                            text-align: center;
+                            margin-top: 20px;
+                            font-size: 12px;
+                            color: #777;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='header'>
+                            <h2>Sistema Jobster</h2>
+                        </div>
+                        <div class='content'>
+                            <p>Estimado(a) usuario,</p>
+                            <p>Gracias por utilizar nuestros servicios. A continuación, encontrará su código de verificación:</p>
+
+                            <div class='token-container'>
+                                <p>Su código es:</p>
+                                <p class='token'>{token}</p>
+                            </div>
+
+                            <p>Este código es válido por un tiempo limitado. Por favor, no comparta este código con nadie.</p>
+                            <p>Si usted no solicitó este código, por favor ignore este mensaje.</p>
+                        </div>
+                        <div class='footer'>
+                            <p>Este es un correo automático, por favor no responda a este mensaje.</p>
+                            <p>&copy; {DateTime.Now.Year} Sistema Jobster. Todos los derechos reservados.</p>
+                        </div>
+                    </div>
+                </body>
                 </html>";
 
                 // Crear mensaje de correo
@@ -115,12 +115,7 @@ namespace Sistema_Jobster.API.Controllers
                 smtp.Send(correo);
 
                 // Retornar el código generado
-                return Ok(new
-                {
-                    success = true,
-                    message = "Código enviado correctamente",
-                    codigo = token
-                });
+                return Ok(token);
             }
             catch (Exception ex)
             {

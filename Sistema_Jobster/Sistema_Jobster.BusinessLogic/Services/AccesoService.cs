@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore.Storage;
+
 //using Sistema_Jobster.DataAccess.Repositories;
 using Sistema_Jobster.DataAccess.Repositories;
 using Sistema_Jobster.Entities;
@@ -16,9 +17,9 @@ namespace Sistema_Jobster.BusinessLogic.Services
         //private readonly PantallasRepository _pantallasRepository;
         //private readonly UsuarioRepository _UsuarioRepository;
         private readonly PantallasPorRolRepository _pantallasPorRolRepository;
+
         private readonly UsuarioRepository _usuarioRepository;
         private readonly RolesRepository _rolesRepository;
-
 
         //public AccesoService(RolesPorPantallasRepository rolesPorPantallasRepository,
         //                    RolesRepository rolesRepository,
@@ -78,8 +79,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
-
-
 
         public ServiceResult EditarRol(tbRoles item)
         {
@@ -173,12 +172,12 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        public ServiceResult BuscarUsuario(int id)
+        public ServiceResult BuscarUsuario(tbUsuarios usua)
         {
             var result = new ServiceResult();
             try
             {
-                var usuario = _usuarioRepository.BuscarUsuario(id);
+                var usuario = _usuarioRepository.BuscarUsuario(usua.Usua_Nombre);
                 return result.Ok(usuario);
             }
             catch (Exception ex)

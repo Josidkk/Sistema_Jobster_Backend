@@ -30,11 +30,19 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Buscar/{id}")]
-        public IActionResult Buscar(int id)
+        [HttpPost("Buscar/")]
+        public IActionResult Buscar([FromBody] UsuarioViewModel usua)
         {
-            var response = _accesoService.BuscarUsuario(id);
-            return Ok(response);
+            var usuario = _mapper.Map<tbUsuarios>(usua);
+            var response = _accesoService.BuscarUsuario(usuario);
+            try
+            {
+                response.Data = _mapper.Map<List<UsuarioViewModel>>(response.Data);
+            }
+            catch (Exception)
+            {
+            }
+            return Ok(response.Data);
         }
 
         [HttpPost("IniciarSesion")]
