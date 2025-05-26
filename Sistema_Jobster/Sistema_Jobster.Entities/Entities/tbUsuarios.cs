@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema_Jobster.Entities.Entities;
 
@@ -108,4 +109,11 @@ public partial class tbUsuarios
     public virtual ICollection<tbTiposContrato> tbTiposContratoUsua_CreacionNavigation { get; set; } = new List<tbTiposContrato>();
 
     public virtual ICollection<tbTiposContrato> tbTiposContratoUsua_ModificacionNavigation { get; set; } = new List<tbTiposContrato>();
+    [NotMapped]
+    public string Pers_Nombres { get; set; }
+    [NotMapped]
+    public string Pers_Apellidos { get; set; }
+    [NotMapped]
+    public string Role_Descripcion { get; set; }
+
 }
