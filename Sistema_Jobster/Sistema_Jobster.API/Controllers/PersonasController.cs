@@ -34,7 +34,10 @@ namespace Sistema_Jobster.API.Controllers
         {
             var item = new tbPersonas { Pers_Id = id };
             var response = _generalService.BuscarPersona(item);
-            return Ok(response);
+
+            response.Data = _mapper.Map<List<PersonaViewModel>>(response.Data);
+
+            return Ok(response.Data);
         }
 
         [HttpPost("Insertar")]
