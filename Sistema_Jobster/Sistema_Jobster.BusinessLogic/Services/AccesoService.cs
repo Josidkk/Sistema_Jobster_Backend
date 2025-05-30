@@ -66,12 +66,12 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        public ServiceResult ListarPantallas()
+        public ServiceResult ListarPantallas(int id)
         {
             var result = new ServiceResult();
             try
             {
-                var list = _rolesRepository.ListPantalla();
+                var list = _rolesRepository.ListPantalla(id);
                 return result.Ok(list);
             }
             catch (Exception ex)

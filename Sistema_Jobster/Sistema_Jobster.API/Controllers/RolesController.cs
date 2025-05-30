@@ -15,7 +15,6 @@ namespace Sistema_Jobster.API.Controllers
     [ApiKey]
     public class RolesController : Controller
     {
-
         private readonly AccesoService _accesoServices;
         private readonly IMapper _mapper;
 
@@ -39,20 +38,24 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("ListarPantallas")]
-        public IActionResult ListarPantallas()
+        [HttpGet("ListarPantallas/{id}")]
+        public IActionResult ListarPantallas(int id)
         {
-            var result = _accesoServices.ListarPantallas();
-            result.Data = _mapper.Map<IEnumerable<PantallasViewModel>>((IEnumerable<tbPantallas>)result.Data);
-            return Ok(result);
+            var result = _accesoServices.ListarPantallas(id);
+
+            try
+            {
+                result.Data = _mapper.Map<List<PantallasViewModel>>(result.Data);
+            }
+            catch (Exception)
+            {
+            }
+            return Ok(result.Data);
         }
-
-
 
         [HttpPost("InsertarRoles")]
         public IActionResult Insertar([FromBody] RolesViewModel item)
         {
-
             var mapped = _mapper.Map<tbRoles>(item);
             var result = _accesoServices.InsertarRol(mapped);
             return Ok(result);
@@ -64,10 +67,8 @@ namespace Sistema_Jobster.API.Controllers
             var mapped = _mapper.Map<tbRoles>(item);
             var result = _accesoServices.BuscarRol(mapped);
 
-           
             result.Data = _mapper.Map<IEnumerable<RolesViewModel>>((IEnumerable<tbRoles>)result.Data);
             return Ok(result);
-
         }
 
         [HttpPut("ActualizarRoles")]
@@ -88,7 +89,6 @@ namespace Sistema_Jobster.API.Controllers
         //    return Ok(result);
         //}
 
-
         [HttpPost("EliminarRoles")]
         public IActionResult Delete([FromBody] RolesViewModel item)
         {
@@ -100,8 +100,5 @@ namespace Sistema_Jobster.API.Controllers
             else
                 return BadRequest(new { Message = result.Message /*, ReturnCode = (int?)result.Data */ });
         }
-
-
-
     }
 }

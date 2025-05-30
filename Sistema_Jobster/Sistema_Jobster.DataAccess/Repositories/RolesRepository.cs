@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using Azure;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using Sistema_Jobster.Entities.Entities;
 using System;
@@ -19,7 +20,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
 
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             db.Execute(ScriptDataBase.Roles_Eliminar, parameter, commandType: System.Data.CommandType.StoredProcedure);
-
 
             int result = parameter.Get<int>("ReturnValue");
             string mensaje = (result == 0) ? "Error al eliminar " : "Eliminado con éxito.";
@@ -67,7 +67,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var result = db.Query<tbRoles>(ScriptDataBase.Roles_Listar, commandType: System.Data.CommandType.StoredProcedure);
             return result;
-
         }
 
         public RequestStatus Update(tbRoles item)
@@ -85,14 +84,13 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return new RequestStatus { CodeStatus = result, MessageStatus = mensaje };
         }
 
-        public IEnumerable<tbPantallas> ListPantalla()
+        public IEnumerable<tbPantallas> ListPantalla(int id)
         {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Role_Id", id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            var result = db.Query<tbPantallas>(ScriptDataBase.Pantallas_Listar, commandType: System.Data.CommandType.StoredProcedure);
+            var result = db.Query<tbPantallas>(ScriptDataBase.Pantallas_Listar, parameter, commandType: System.Data.CommandType.StoredProcedure);
             return result;
-
         }
-
-
     }
 }
