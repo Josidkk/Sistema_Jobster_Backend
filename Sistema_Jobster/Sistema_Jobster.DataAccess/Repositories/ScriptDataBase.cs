@@ -37,10 +37,14 @@ namespace Sistema_Jobster.DataAccess.Repositories
         #region Plazas
 
         public static string Plazas_Listar = "[Plaz].[SP_Plazas_Listar]";
+        public static string Plazas_Listartop5 = "[Plaz].[SP_PlazasMasSolicitadas]";
         public static string Plaza_Buscar = "[Plaz].[SP_Plazas_Buscar]";
         public static string Plaza_Eliminar = "[Plaz].[SP_Plazas_Eliminar]";
         public static string Plaza_Insertar = "[Plaz].[SP_Plazas_Insertar]";
         public static string Plaza_Actualizar = "[Plaz].[SP_Plazas_Actualizar]";
+        public static string Plaza_CantidadPorCategoria = "[Plaz].[SP_CantidadPlazasSegunCategoria]";
+
+        public static string TotalUsuariosAprobadosParaPublicar = "[Plaz].[SP_TotalUsuariosAprobadosParaPublicar]";
 
         #endregion Plazas
 

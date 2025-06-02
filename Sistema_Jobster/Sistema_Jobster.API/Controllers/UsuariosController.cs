@@ -39,6 +39,14 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(response.Data);
         }
 
+          [HttpGet("CantidadUsuariosAprobados")]
+        public IActionResult Listar5Plazas()
+        {
+            var result = _accesoService.CantidadUsuariosAprobados();
+            
+            return Ok(result);
+        }
+
         [HttpPost("Buscar/")]
         public IActionResult Buscar([FromBody] UsuarioViewModel usua)
         {

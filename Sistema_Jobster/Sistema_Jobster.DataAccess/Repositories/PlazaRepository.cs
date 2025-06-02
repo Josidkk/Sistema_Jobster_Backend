@@ -88,6 +88,24 @@ namespace Sistema_Jobster.DataAccess.Repositories
 
         }
 
+          public IEnumerable<Object> ListTop5()
+        {
+            using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
+            var result = db.Query<object>(ScriptDataBase.Plazas_Listartop5, commandType: System.Data.CommandType.StoredProcedure);
+            return result;
+        }
+
+        public IEnumerable<Object> CantidadPlazasPorCate(int id)
+        {
+            using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
+            var parameter = new DynamicParameters();
+            parameter.Add("@Cate_Id", id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
+
+            var result = db.Query<object>(ScriptDataBase.Plaza_CantidadPorCategoria,parameter,commandType: System.Data.CommandType.StoredProcedure);
+            return result;
+        }
+
+
         public RequestStatus Update(tbPlazas item)
         {
             var parameter = new DynamicParameters();

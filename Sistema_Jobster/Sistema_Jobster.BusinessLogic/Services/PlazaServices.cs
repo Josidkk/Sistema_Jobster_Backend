@@ -232,6 +232,37 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
+                public IEnumerable<object> ListTop5Plazas()
+           {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _plazaRepository.ListTop5();
+                return list;
+            }
+            catch (Exception ex)
+            {
+               
+                return null;
+            }
+        }
+
+
+        public IEnumerable<object> CantidadPlazasPorCate(int id)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _plazaRepository.CantidadPlazasPorCate(id);
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public ServiceResult InsertPlaza(tbPlazas Plaza)
         {
             var result = new ServiceResult();

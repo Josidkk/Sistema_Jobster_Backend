@@ -32,6 +32,22 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(mapped);
         }
 
+        [HttpGet("ListarTop5Plazas")]
+        public IActionResult Listar5Plazas()
+        {
+            var result = _plazaServices.ListTop5Plazas();
+            
+            return Ok(result);
+        }
+
+        [HttpGet("CantidadPlazasPorCategoria/{id}")]
+        public IActionResult CantidadPlazasPorCate(int id)
+        {
+            var result = _plazaServices.CantidadPlazasPorCate(id);
+
+            return Ok(result);
+        }
+
 
         [HttpPost("InsertarPlaza")]
         public IActionResult Insertar([FromBody] PlazaViewModel item)

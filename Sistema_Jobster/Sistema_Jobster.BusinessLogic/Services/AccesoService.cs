@@ -172,6 +172,22 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
+
+        public IEnumerable<object> CantidadUsuariosAprobados()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var list = _usuarioRepository.CantidadUsuariosAprobados();
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public ServiceResult ListarUsuariosAprobados()
         {
             var result = new ServiceResult();
