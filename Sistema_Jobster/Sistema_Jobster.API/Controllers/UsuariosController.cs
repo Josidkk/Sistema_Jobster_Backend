@@ -36,7 +36,7 @@ namespace Sistema_Jobster.API.Controllers
             var response = _accesoService.ListarUsuariosAprobados();
             response.Data = _mapper.Map<IEnumerable<UsuarioViewModel>>((IEnumerable<tbUsuarios>)response.Data);
 
-            return Ok(response);
+            return Ok(response.Data);
         }
 
         [HttpPost("Buscar/")]

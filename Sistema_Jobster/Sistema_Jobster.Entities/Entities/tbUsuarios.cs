@@ -34,6 +34,8 @@ public partial class tbUsuarios
 
     [NotMapped]
     public string role_Descripcion { get; set; }
+    [NotMapped]
+    public bool? Usua_Aprobado { get; set; }
 
     public int Usua_Creacion { get; set; }
 

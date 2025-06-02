@@ -21,6 +21,8 @@ namespace Sistema_Jobster.API.Models
         public string Pers_Apellidos { get; set; }
         [NotMapped]
         public string Role_Descripcion { get; set; }
+        [NotMapped]
+        public bool? Usua_Aprobado { get; set; }
         public int Usua_Creacion { get; set; }
         public DateTime Usua_FechaCreacion { get; set; }
         public int? Usua_Modificacion { get; set; }
