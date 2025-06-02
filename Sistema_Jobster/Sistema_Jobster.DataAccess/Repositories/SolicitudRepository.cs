@@ -28,7 +28,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return new RequestStatus
             {
                 CodeStatus = result,
-                MessageStatus = result > 0 ? "Usuario eliminado con éxito." : "Error al eliminar usuario."
+                MessageStatus = result > 0 ? "Solicitud eliminada con éxito." : "Error al eliminar solicitud."
 
                 //CodeStatus = result,
                 //MessageStatus = mensaje

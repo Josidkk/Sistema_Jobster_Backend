@@ -20,16 +20,19 @@ namespace Sistema_Jobster.DataAccess.Repositories
             parameter.Add("ReturnValue", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.ReturnValue);
 
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            db.Execute(ScriptDataBase.Guardado_Eliminar, parameter, commandType: System.Data.CommandType.StoredProcedure);
+            //db.Execute(ScriptDataBase.Guardado_Eliminar, parameter, commandType: System.Data.CommandType.StoredProcedure);
 
+            var result = db.Execute(ScriptDataBase.Guardado_Eliminar, parameter, commandType: System.Data.CommandType.StoredProcedure);
 
-            int result = parameter.Get<int>("ReturnValue");
-            string mensaje = (result == 0) ? "Error al eliminar " : "Eliminado con éxito.";
+            //string mensaje = (result == 0) ? "Error al eliminar " : "Eliminado con éxito.";
 
             return new RequestStatus
             {
                 CodeStatus = result,
-                MessageStatus = mensaje
+                MessageStatus = result > 0 ? "'Guardado' eliminado con éxito." : "Error al eliminar Guardado."
+
+                //CodeStatus = result,
+                //MessageStatus = mensaje
             };
         }
 
