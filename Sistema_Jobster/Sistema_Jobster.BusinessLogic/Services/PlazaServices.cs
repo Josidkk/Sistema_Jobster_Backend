@@ -527,7 +527,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 switch (returnCode)
                 {
                     case 1:
-                        return result.Ok("1");
+                        return result.Ok("1 Completado Exitosamente");
                     case 2:
                         return result.Warning("2");
                     case -1:
