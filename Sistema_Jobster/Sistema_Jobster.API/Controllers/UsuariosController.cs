@@ -30,6 +30,15 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(response);
         }
 
+        [HttpGet("ListarAprobados")]
+        public IActionResult ListarAprobados()
+        {
+            var response = _accesoService.ListarUsuariosAprobados();
+            response.Data = _mapper.Map<IEnumerable<UsuarioViewModel>>((IEnumerable<tbUsuarios>)response.Data);
+
+            return Ok(response);
+        }
+
         [HttpPost("Buscar/")]
         public IActionResult Buscar([FromBody] UsuarioViewModel usua)
         {
@@ -60,6 +69,16 @@ namespace Sistema_Jobster.API.Controllers
             {
             }
             return Ok(response.Data);
+        }
+
+        [HttpPut("AprobarUsuario/{id}")]
+        public IActionResult AprobarUsuario(int id)
+        {
+            tbUsuarios usua = new tbUsuarios();
+            usua.Usua_Id = id;
+            var result = _accesoService.AprobarUsuario(usua);
+
+            return Ok(result.Data);
         }
 
         [HttpPost("Insertar")]

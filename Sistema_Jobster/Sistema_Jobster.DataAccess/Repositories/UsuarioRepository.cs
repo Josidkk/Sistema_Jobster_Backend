@@ -15,6 +15,13 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return result;
         }
 
+        public IEnumerable<tbUsuarios> ListarUsuariosAprobados()
+        {
+            using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
+            var result = db.Query<tbUsuarios>("[Acce].[SP_Usuarios_ListarAprobados]", commandType: System.Data.CommandType.StoredProcedure);
+            return result;
+        }
+
         public IEnumerable<tbUsuarios> BuscarUsuario(string id)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
@@ -70,6 +77,20 @@ namespace Sistema_Jobster.DataAccess.Repositories
             {
                 CodeStatus = result,
                 MessageStatus = result > 0 ? "Usuario eliminado con éxito." : "Error al eliminar usuario."
+            };
+        }
+
+        public RequestStatus AprobarUsuario(tbUsuarios usuario)
+        {
+            var parameters = new { Usua_Id = usuario.Usua_Id };
+
+            using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
+            var result = db.Execute("[Acce].[SP_Usuarios_AprobarCuenta]", parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+            return new RequestStatus
+            {
+                CodeStatus = result,
+                MessageStatus = result > 0 ? "Usuario aprobado o desaprobado con éxito." : "Error al aprobar o desaprobar usuario."
             };
         }
 

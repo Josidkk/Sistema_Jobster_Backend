@@ -172,6 +172,21 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
+        public ServiceResult ListarUsuariosAprobados()
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var usuarios = _usuarioRepository.ListarUsuariosAprobados();
+                return result.Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+
         public ServiceResult BuscarUsuario(tbUsuarios usua)
         {
             var result = new ServiceResult();
@@ -220,6 +235,20 @@ namespace Sistema_Jobster.BusinessLogic.Services
             try
             {
                 var response = _usuarioRepository.EliminarUsuario(usuario);
+                return result.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return result.Error(ex.Message);
+            }
+        }
+
+        public ServiceResult AprobarUsuario(tbUsuarios usuario)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var response = _usuarioRepository.AprobarUsuario(usuario);
                 return result.Ok(response);
             }
             catch (Exception ex)
