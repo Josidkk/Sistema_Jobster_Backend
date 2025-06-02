@@ -87,7 +87,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
         public IEnumerable<tbPantallas> ListPantalla(int id)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("@Pant_Id", id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
+            parameter.Add("@Usua_Id", id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var result = db.Query<tbPantallas>(ScriptDataBase.Pantallas_Listar, parameter, commandType: System.Data.CommandType.StoredProcedure);
             return result;
