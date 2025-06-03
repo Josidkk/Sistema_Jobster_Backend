@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema_Jobster.Entities.Entities;
 
@@ -40,6 +41,32 @@ public partial class tbPlazas
     public int? Usua_Modificacion { get; set; }
 
     public DateTime? Plaz_FechaModificacion { get; set; }
+
+
+    [NotMapped]
+    public string Muni_Descripcion { get; set; }
+    [NotMapped]
+    public string Depa_Descripcion { get; set; }
+    [NotMapped]
+    public string Cate_Descripcion { get; set; }
+    [NotMapped]
+    public string Usua_Nombre { get; set; }
+    [NotMapped]
+    public string Usua_Correo { get; set; }
+    [NotMapped]
+    public string Usua_Imagen { get; set; }
+    [NotMapped]
+    public string Pers_Telefono { get; set; }
+    [NotMapped]
+    public string Pers_Nombres { get; set; }
+    [NotMapped]
+    public string Pers_Apellidos { get; set; }
+    [NotMapped]
+    public string Carg_Descripcion { get; set; }
+    [NotMapped]
+    public string TiCo_Descripcion { get; set; }
+
+
 
     public virtual tbCargos Carg { get; set; }
 
