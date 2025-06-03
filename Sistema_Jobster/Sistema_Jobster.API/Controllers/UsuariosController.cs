@@ -40,7 +40,7 @@ namespace Sistema_Jobster.API.Controllers
         }
 
         [HttpPost("CantidadUsuariosAprobados")]
-        public IActionResult Listar5Plazas(string fechainicio, string fechafin)
+        public IActionResult Listar5Plazas(DateTime fechainicio, DateTime fechafin)
         {
             var result = _accesoService.CantidadUsuariosAprobados(fechainicio, fechafin);
 

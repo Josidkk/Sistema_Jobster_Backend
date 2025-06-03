@@ -11,7 +11,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
 {
     public class PlazaRepository
     {
-
         public RequestStatus Delete(tbPlazas item)
         {
             var parameter = new DynamicParameters();
@@ -20,7 +19,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
 
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             db.Execute(ScriptDataBase.Plaza_Eliminar, parameter, commandType: System.Data.CommandType.StoredProcedure);
-
 
             int result = parameter.Get<int>("ReturnValue");
             string mensaje = (result == 0) ? "Error al eliminar " : "Eliminado con éxito.";
@@ -45,7 +43,6 @@ namespace Sistema_Jobster.DataAccess.Repositories
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var result = db.Query<tbPlazas>(ScriptDataBase.Plaza_Buscar, parameter, commandType: System.Data.CommandType.StoredProcedure);
 
-
             return result;
         }
 
@@ -68,10 +65,8 @@ namespace Sistema_Jobster.DataAccess.Repositories
             parameter.Add("@Carg_Id", item.Carg_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
             parameter.Add("@TiCo_Id", item.TiCo_Id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
 
-
             parameter.Add("@Plaz_FechaCreacion", DateTime.Now, System.Data.DbType.DateTime, System.Data.ParameterDirection.Input);
             parameter.Add("@Usua_Creacion", 1, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
-
 
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var result = db.Execute(ScriptDataBase.Plaza_Insertar, parameter, commandType: System.Data.CommandType.StoredProcedure);
@@ -85,13 +80,16 @@ namespace Sistema_Jobster.DataAccess.Repositories
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
             var result = db.Query<tbPlazas>(ScriptDataBase.Plazas_Listar, commandType: System.Data.CommandType.StoredProcedure);
             return result;
-
         }
 
-          public IEnumerable<Object> ListTop5()
+        public IEnumerable<Object> ListTop5(DateTime FechaInicio, DateTime FechaFin)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            var result = db.Query<object>(ScriptDataBase.Plazas_Listartop5, commandType: System.Data.CommandType.StoredProcedure);
+            var parameter = new DynamicParameters();
+            parameter.Add("@FechaInicio", FechaInicio, System.Data.DbType.Date, System.Data.ParameterDirection.Input);
+            parameter.Add("@FechaFin", FechaFin, System.Data.DbType.Date, System.Data.ParameterDirection.Input);
+
+            var result = db.Query<object>(ScriptDataBase.Plazas_Listartop5, parameter, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
 
@@ -101,10 +99,9 @@ namespace Sistema_Jobster.DataAccess.Repositories
             var parameter = new DynamicParameters();
             parameter.Add("@Cate_Id", id, System.Data.DbType.Int32, System.Data.ParameterDirection.Input);
 
-            var result = db.Query<object>(ScriptDataBase.Plaza_CantidadPorCategoria,parameter,commandType: System.Data.CommandType.StoredProcedure);
+            var result = db.Query<object>(ScriptDataBase.Plaza_CantidadPorCategoria, parameter, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
-
 
         public RequestStatus Update(tbPlazas item)
         {
@@ -133,6 +130,5 @@ namespace Sistema_Jobster.DataAccess.Repositories
             string mensaje = (result == 0) ? "Error en base de datos" : "Exito";
             return new RequestStatus { CodeStatus = result, MessageStatus = mensaje };
         }
-        
     }
 }

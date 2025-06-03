@@ -12,8 +12,6 @@ namespace Sistema_Jobster.API.Controllers
     [ApiKey]
     public class PlazasController : Controller
     {
-    
-
         private readonly PlazaServices _plazaServices;
         private readonly IMapper _mapper;
 
@@ -23,7 +21,6 @@ namespace Sistema_Jobster.API.Controllers
             _mapper = mapper;
         }
 
-
         [HttpGet("ListarPlazas")]
         public IActionResult Listar()
         {
@@ -32,11 +29,10 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(mapped);
         }
 
-        [HttpGet("ListarTop5Plazas")]
-        public IActionResult Listar5Plazas()
+        [HttpPost("ListarTop5Plazas")]
+        public IActionResult Listar5Plazas(DateTime FechaInicio, DateTime FechaFin)
         {
-            var result = _plazaServices.ListTop5Plazas();
-            
+            var result = _plazaServices.ListTop5Plazas(FechaInicio, FechaFin);
             return Ok(result);
         }
 
@@ -48,11 +44,9 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(result);
         }
 
-
         [HttpPost("InsertarPlaza")]
         public IActionResult Insertar([FromBody] PlazaViewModel item)
         {
-
             var mapped = _mapper.Map<tbPlazas>(item);
             var result = _plazaServices.InsertPlaza(mapped);
             return Ok(result);
@@ -66,7 +60,6 @@ namespace Sistema_Jobster.API.Controllers
 
             var mapeado = _mapper.Map<IEnumerable<PlazaViewModel>>(result);
             return Ok(mapeado);
-
         }
 
         [HttpPut("ActualizarPlaza")]
@@ -86,7 +79,6 @@ namespace Sistema_Jobster.API.Controllers
         //    var result = _gralServices.DeletePlaza(mapped);
         //    return Ok(result);
         //}
-
 
         [HttpPost("EliminarPlaza")]
         public IActionResult Delete([FromBody] PlazaViewModel item)

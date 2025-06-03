@@ -40,6 +40,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
         }
 
         #region cargos
+
         public IEnumerable<tbCargos> ListCargos()
         {
             var result = new ServiceResult();
@@ -82,6 +83,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeleteCargo(tbCargos Cargo)
         {
             var result = new ServiceResult();
@@ -93,10 +95,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -106,7 +111,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbCargos> FindCargo(tbCargos Cargo)
         {
@@ -122,10 +126,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
+        #endregion cargos
 
         #region Categorias
+
         public IEnumerable<tbCategorias> ListCategoria()
         {
             var result = new ServiceResult();
@@ -140,6 +144,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return categorias;
             }
         }
+
         public IEnumerable<tbCategorias> BuscarCategoria(tbCategorias item)
         {
             var result = new ServiceResult();
@@ -154,6 +159,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return categoria;
             }
         }
+
         public ServiceResult InsertarCategoria(tbCategorias item)
         {
             var result = new ServiceResult();
@@ -180,10 +186,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("Categoría eliminada con éxito.");
+
                     case 2:
                         return result.Warning("Categoría en uso, no se puede eliminar.");
+
                     case -1:
                         return result.Error("Error al eliminar la categoría.");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -193,7 +202,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public ServiceResult ActualizarCategoria(tbCategorias item)
         {
@@ -209,14 +217,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-
-
-
-
-        #endregion
-
+        #endregion Categorias
 
         #region Plazas
+
         public IEnumerable<tbPlazas> ListPlazas()
         {
             var result = new ServiceResult();
@@ -232,21 +236,19 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-                public IEnumerable<object> ListTop5Plazas()
-           {
+        public IEnumerable<object> ListTop5Plazas(DateTime fechaInicio, DateTime FechaFin)
+        {
             var result = new ServiceResult();
             try
             {
-                var list = _plazaRepository.ListTop5();
+                var list = _plazaRepository.ListTop5(fechaInicio, FechaFin);
                 return list;
             }
             catch (Exception ex)
             {
-               
                 return null;
             }
         }
-
 
         public IEnumerable<object> CantidadPlazasPorCate(int id)
         {
@@ -258,7 +260,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -290,6 +291,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeletePlaza(tbPlazas Plaza)
         {
             var result = new ServiceResult();
@@ -301,10 +303,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -314,7 +319,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbPlazas> FindPlaza(tbPlazas Plaza)
         {
@@ -330,10 +334,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
+        #endregion Plazas
 
         #region TiposContrato
+
         public IEnumerable<tbTiposContrato> ListTiposContrato()
         {
             var result = new ServiceResult();
@@ -376,6 +380,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeleteTipoContrato(tbTiposContrato TipoContrato)
         {
             var result = new ServiceResult();
@@ -387,10 +392,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -400,7 +408,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbTiposContrato> FindTipoContrato(tbTiposContrato TipoContrato)
         {
@@ -416,10 +423,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
+        #endregion TiposContrato
 
         #region Requisitos
+
         public IEnumerable<tbRequisitos> ListRequisitos()
         {
             var result = new ServiceResult();
@@ -462,6 +469,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeleteRequisito(tbRequisitos Requisito)
         {
             var result = new ServiceResult();
@@ -473,10 +481,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -486,7 +497,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbRequisitos> FindRequisito(tbRequisitos Requisito)
         {
@@ -502,10 +512,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
+        #endregion Requisitos
 
         #region Solicitudes
+
         public IEnumerable<tbSolicitudes> ListSolicitudes()
         {
             var result = new ServiceResult();
@@ -548,6 +558,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeleteSolicitud(tbSolicitudes Solicitud)
         {
             var result = new ServiceResult();
@@ -559,10 +570,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1 Completado Exitosamente");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -572,7 +586,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbSolicitudes> FindSolicitud(tbSolicitudes Solicitud)
         {
@@ -588,10 +601,10 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
+        #endregion Solicitudes
 
         #region Guardados
+
         public IEnumerable<tbGuardados> ListGuardados()
         {
             var result = new ServiceResult();
@@ -634,6 +647,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
+
         public ServiceResult DeleteGuardado(tbGuardados Guardado)
         {
             var result = new ServiceResult();
@@ -645,10 +659,13 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 {
                     case 1:
                         return result.Ok("1");
+
                     case 2:
                         return result.Warning("2");
+
                     case -1:
                         return result.Error("-1");
+
                     default:
                         return result.Error("Código de retorno desconocido.");
                 }
@@ -658,7 +675,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error("Ocurrió un error inesperado: " + ex.Message);
             }
         }
-
 
         public IEnumerable<tbGuardados> FindGuardado(tbGuardados Guardado)
         {
@@ -674,11 +690,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        #endregion
-
-
-
+        #endregion Guardados
     }
-
-
 }

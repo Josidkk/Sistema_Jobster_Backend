@@ -30,7 +30,7 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return result;
         }
 
-        public IEnumerable<Object> CantidadUsuariosAprobados(string fechainicio, string fechafin)
+        public IEnumerable<Object> CantidadUsuariosAprobados(DateTime fechainicio, DateTime fechafin)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
 

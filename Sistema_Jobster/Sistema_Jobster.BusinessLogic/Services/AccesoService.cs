@@ -172,7 +172,7 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-        public IEnumerable<object> CantidadUsuariosAprobados(string fechainicio, string fechafin)
+        public IEnumerable<object> CantidadUsuariosAprobados(DateTime fechainicio, DateTime fechafin)
         {
             var result = new ServiceResult();
             try
