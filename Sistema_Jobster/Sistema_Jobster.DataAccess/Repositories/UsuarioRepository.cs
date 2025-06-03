@@ -30,13 +30,17 @@ namespace Sistema_Jobster.DataAccess.Repositories
             return result;
         }
 
-        public IEnumerable<Object> CantidadUsuariosAprobados()
+        public IEnumerable<Object> CantidadUsuariosAprobados(string fechainicio, string fechafin)
         {
             using var db = new SqlConnection(Sistema_JobsterContext.ConnectionString);
-            var result = db.Query<object>(ScriptDataBase.TotalUsuariosAprobadosParaPublicar, commandType: System.Data.CommandType.StoredProcedure);
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@FechaInicio", fechainicio, System.Data.DbType.Date, System.Data.ParameterDirection.Input);
+            parameters.Add("@FechaFin", fechafin, System.Data.DbType.Date, System.Data.ParameterDirection.Input);
+            var result = db.Query<object>(ScriptDataBase.TotalUsuariosAprobadosParaPublicar, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
             return result;
         }
-
 
         public IEnumerable<tbUsuarios> IniciarSesion(tbUsuarios item)
         {

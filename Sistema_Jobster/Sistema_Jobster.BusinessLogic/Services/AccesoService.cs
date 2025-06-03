@@ -172,18 +172,16 @@ namespace Sistema_Jobster.BusinessLogic.Services
             }
         }
 
-
-        public IEnumerable<object> CantidadUsuariosAprobados()
+        public IEnumerable<object> CantidadUsuariosAprobados(string fechainicio, string fechafin)
         {
             var result = new ServiceResult();
             try
             {
-                var list = _usuarioRepository.CantidadUsuariosAprobados();
+                var list = _usuarioRepository.CantidadUsuariosAprobados(fechainicio, fechafin);
                 return list;
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -201,7 +199,6 @@ namespace Sistema_Jobster.BusinessLogic.Services
                 return result.Error(ex.Message);
             }
         }
-
 
         public ServiceResult BuscarUsuario(tbUsuarios usua)
         {

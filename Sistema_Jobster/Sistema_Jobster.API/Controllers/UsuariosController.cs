@@ -39,11 +39,11 @@ namespace Sistema_Jobster.API.Controllers
             return Ok(response.Data);
         }
 
-          [HttpGet("CantidadUsuariosAprobados")]
-        public IActionResult Listar5Plazas()
+        [HttpPost("CantidadUsuariosAprobados")]
+        public IActionResult Listar5Plazas(string fechainicio, string fechafin)
         {
-            var result = _accesoService.CantidadUsuariosAprobados();
-            
+            var result = _accesoService.CantidadUsuariosAprobados(fechainicio, fechafin);
+
             return Ok(result);
         }
 
